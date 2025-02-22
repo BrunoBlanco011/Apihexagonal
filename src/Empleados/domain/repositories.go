@@ -1,14 +1,11 @@
 package domain
 
-import (
-	"api-hexagonal/src/Empleados/domain"
-)
-
+import "apiGo/src/Empleados/domain/entities"
 
 type EmpleadoRepository interface {
-	GetAll() ([]Empleado, error)
-	GetById(id int) (Empleado, error)
-	Create(empleado Empleado) (Empleado, error)
-	Update(empleado Empleado) (Empleado, error)
-	Delete(id int) error
+	//GetAll() ([]entities.Empleado, error)
+	//GetById(id int) (entities.Empleado, error)
+	Create(empleado entities.Empleado) (entities.Empleado, error)
+	//Update(empleado entities.Empleado) (entities.Empleado, error)
+	//Delete(id int)error
 }

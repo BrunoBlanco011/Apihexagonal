@@ -1,20 +1,20 @@
 package infrastructureempleados
 
-import(
-	"api-hexagonal/src/core"
-	"api-hexagonal/src/Empleados/application"
+import (
+	"apiGo/src/Empleados/application"
+	"apiGo/src/core"
 )
 
 type Dependencies struct {
-		AddEmpleadosUseCase *application.AddEmpleadosUseCase
-	}
+	AddEmpleadosUseCase *application.AddEmpleadosUseCase
+}
 
 func NewDependencies() (*Dependencies, error) {
 	db, err := core.InitDB()
 	if err != nil {
 		return nil, err
 	}
-	
+
 	repo := NewMySQLRepository(db)
 
 	return &Dependencies{

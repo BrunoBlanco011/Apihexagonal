@@ -1,16 +1,14 @@
-
 package main
+
 import (
+	"apiGo/src/Empleados/infrastructureempleados"
 	"log"
-	"APIHEXAGONAL/api-hexagonal/src/Empleados/infrastructureempleados"
-	
-	
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	
+
 	EmpleadosDeps, err := infrastructureempleados.NewDependencies()
 
 	if err != nil {

@@ -1,8 +1,8 @@
 package application
 
 import (
-	"api-hexagonal/src/Empleados/domain/entities"
-	"api-hexagonal/src/Empleados/domain"
+	"apiGo/src/Empleados/domain"
+	"apiGo/src/Empleados/domain/entities"
 )
 
 type AddEmpleadosUseCase struct {

@@ -1,9 +1,8 @@
 package controllers
 
 import (
-	
-	"api-hexagonal/src/Empleados/domain/entities"
-	"api-hexagonal/src/Empleados/application"
+	"apiGo/src/Empleados/application"
+	"apiGo/src/Empleados/domain/entities"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,10 +1,9 @@
 package infrastructureempleados
 
 import (
+	"apiGo/src/Empleados/domain"
+	"apiGo/src/Empleados/domain/entities"
 	"database/sql"
-	"api-hexagonal/src/Empleados/domain/entities"
-	"api-hexagonal/src/Empleados/domain"
-
 )
 
 type MySQLRepository struct {
@@ -16,9 +15,10 @@ func NewMySQLRepository(db *sql.DB) domain.EmpleadoRepository {
 }
 
 func (repo *MySQLRepository) Create(empleado entities.Empleado) (entities.Empleado, error) {
-	_, err := repo.db.Exec("INSERT INTO empleados (id, nombre, apellido,) VALUES (?, ?, ?)", empleado.id, empleado.Nombre, empleado.Apellido,)
-	if err != nil {	
+	_, err := repo.db.Exec("INSERT INTO empleados (id, nombre, apellido) VALUES (?, ?, ?)",
+		empleado.Id, empleado.Nombre, empleado.Apellido)
+	if err != nil {
 		return entities.Empleado{}, err
 	}
-	return empleado, nil
+	return empleado,nil
 }

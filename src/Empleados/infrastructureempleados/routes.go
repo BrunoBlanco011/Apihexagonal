@@ -1,10 +1,10 @@
 package infrastructureempleados
 
-import ( 
-"api-hexagonal/src/Empleados/application"
-"api-hexagonal/src/Empleados/infrastructureempleados/controllers"
+import (
+	"apiGo/src/Empleados/application"
+	"apiGo/src/Empleados/infrastructureempleados/controllers"
 
-"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 )
 
 func RegisterEmpleadosRoutes(
