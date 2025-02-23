@@ -7,6 +7,10 @@ import (
 
 type Dependencies struct {
 	AddEmpleadosUseCase *application.AddEmpleadosUseCase
+	ViewEmpleadoIDUseCase *application.ViewEmpleadoIDUseCase
+	ViewAllEmpleadoUseCase *application.ViewAllEmpleadoUseCase
+	UpdateEmpleadoUseCase  *application.UpdateEmpleadoUseCase
+	DeleteEmpleadoUseCase *application.DeleteEmpleadoUseCase
 }
 
 func NewDependencies() (*Dependencies, error) {
@@ -19,5 +23,10 @@ func NewDependencies() (*Dependencies, error) {
 
 	return &Dependencies{
 		AddEmpleadosUseCase: application.NewAddEmpleadosUseCase(repo),
+		ViewEmpleadoIDUseCase: application.NewViewEmpleadoIDUseCase(repo),
+		ViewAllEmpleadoUseCase: application.NewViewAllEmpleadoUseCase(repo),
+		UpdateEmpleadoUseCase: application.NewUpdateEmpleadoUseCase(repo),
+		DeleteEmpleadoUseCase: application.NewDeleteEmpleadoUseCase(repo),
+		
 	}, nil
 }

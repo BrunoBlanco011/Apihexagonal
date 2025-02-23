@@ -17,7 +17,14 @@ func main() {
 
 	router := gin.Default()
 
-	infrastructureempleados.RegisterEmpleadosRoutes(router, EmpleadosDeps.AddEmpleadosUseCase)
+	infrastructureempleados.RegisterEmpleadosRoutes(
+		router, 
+		EmpleadosDeps.AddEmpleadosUseCase, 
+		EmpleadosDeps.ViewEmpleadoIDUseCase,
+		EmpleadosDeps.ViewAllEmpleadoUseCase,
+		EmpleadosDeps.UpdateEmpleadoUseCase,
+		EmpleadosDeps.DeleteEmpleadoUseCase,
+	)
 
 	router.Run(":8080")
 }
