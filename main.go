@@ -3,6 +3,7 @@ package main
 import (
 	"apiGo/src/Empleados/infrastructureempleados"
 	"apiGo/src/Productos/infrastructureProducts"
+	"apiGo/src/core"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -18,7 +19,10 @@ func main() {
 		log.Fatalf("Error initializing dependencies: %v", err)
 	}
 
+	notifier := core.NewUpdateNotifier()
+
 	router := gin.Default()
+
 
 	infrastructureempleados.RegisterEmpleadosRoutes(
 		router,
@@ -27,6 +31,7 @@ func main() {
 		EmpleadosDeps.ViewAllEmpleadoUseCase,
 		EmpleadosDeps.UpdateEmpleadoUseCase,
 		EmpleadosDeps.DeleteEmpleadoUseCase,
+		notifier,
 	)
 
 	infrastructureproducts.RegisterProductosRoutes(
@@ -36,6 +41,7 @@ func main() {
 		ProductsDeps.ViewbyIDProductUseCase,
 		ProductsDeps.UpdateProductUseCase,
 		ProductsDeps.DeleteProductUseCase,
+		notifier,
 	)
 	router.Run(":8080")
 }

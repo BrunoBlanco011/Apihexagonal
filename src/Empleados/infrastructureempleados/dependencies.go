@@ -20,13 +20,14 @@ func NewDependencies() (*Dependencies, error) {
 	}
 
 	repo := NewMySQLRepository(db)
+	notifier := core.NewUpdateNotifier()
 
 	return &Dependencies{
-		AddEmpleadosUseCase: application.NewAddEmpleadosUseCase(repo),
+		AddEmpleadosUseCase: application.NewAddEmpleadosUseCase(repo, notifier),
 		ViewEmpleadoIDUseCase: application.NewViewEmpleadoIDUseCase(repo),
 		ViewAllEmpleadoUseCase: application.NewViewAllEmpleadoUseCase(repo),
-		UpdateEmpleadoUseCase: application.NewUpdateEmpleadoUseCase(repo),
-		DeleteEmpleadoUseCase: application.NewDeleteEmpleadoUseCase(repo),
+		UpdateEmpleadoUseCase: application.NewUpdateEmpleadoUseCase(repo, notifier),
+		DeleteEmpleadoUseCase: application.NewDeleteEmpleadoUseCase(repo, notifier),
 		
 	}, nil
 }

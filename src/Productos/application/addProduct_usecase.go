@@ -1,19 +1,25 @@
 package application
 
 import (
-	"apiGo/src/Productos/domain"
-	"apiGo/src/Productos/domain/entities"
+    "apiGo/src/Productos/domain"
+    "apiGo/src/Productos/domain/entities"
+    "apiGo/src/core"
 )
 
 type AddProductUseCase struct {
-	repo domain.ProductRepository
-
+    repo     domain.ProductRepository
+    notifier *core.UpdateNotifier
 }
 
-func NewAddProductUseCase(repo domain.ProductRepository) *AddProductUseCase {
-	return &AddProductUseCase{repo: repo}
+func NewAddProductUseCase(repo domain.ProductRepository, notifier *core.UpdateNotifier) *AddProductUseCase {
+    return &AddProductUseCase{repo: repo, notifier: notifier}
 }
 
 func (uc *AddProductUseCase) AddProduct(product entities.Product) (entities.Product, error) {
-	return uc.repo.Create(product)
+    result, err := uc.repo.Create(product)
+    if err != nil {
+        return entities.Product{}, err
+    }
+    uc.notifier.NotifyUpdate()
+    return result, nil
 }

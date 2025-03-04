@@ -12,6 +12,7 @@ func NewMySQLRepository(db *sql.DB) domain.ProductRepository {
 	return &MySQLRepository{db: db}
 }
 
+
 func (repo *MySQLRepository) Create(producto entities.Product) (entities.Product, error) {
 	_, err := repo.db.Exec("INSERT INTO productos (id, nombre, cantidad, precio) VALUES (?, ?,?, ?)",
 		producto.Id, producto.Nombre, producto.Cantidad, producto.Precio)
